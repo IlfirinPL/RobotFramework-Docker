@@ -18,8 +18,8 @@ example use with connection to chrome browser
 docker run -d --name standalone-chrome -P selenium/standalone-chrome
 
 docker run \ 
-    -v z:/in:/opt/robotframework/tests:Z\
-    -v z:/out:/opt/robotframework/output:Z\
+    -v /in:/opt/robotframework/tests:Z\
+    -v /out:/opt/robotframework/output:Z\
     --link standalone-chrome \
     mkoperski/robotframework:latest
 `
