@@ -1,0 +1,17 @@
+setuptools
+lxml
+selenium
+#ndg-httpsclient
+robotframework
+robotframework-ride==1.5.2.1
+JayDeBeApi
+pillow>=2.9.0
+robotframework-requests
+requests
+robotframework-requests
+#robotframework-imagehorizonlibrary
+robotframework-archivelibrary
+#robotframework-sshlibrary
+robotframework-extendedselenium2library
+openpyxl
+robotframework-httplibrary
