@@ -1,65 +1,52 @@
 FROM ubuntu:latest
 
-MAINTAINER Marcin Koperski
 LABEL description Robot Framework in Docker with Additional Libaries.
+LABEL Marcin Koperski
+
+
+ENV ROBOT_HOME /opt/robot
+RUN mkdir $ROBOT_HOME
+
+ENV TZ=Europe/Warsaw
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+
+## system upgrade
+RUN apt-get update && apt-get upgrade -yqq \
+    && rm -rf /var/lib/apt/lists/*
 
 #==============================
 # imagemagick
 #==============================
 RUN apt-get update &&  apt-get install -yqq \
-	imagemagick \
-	&& rm -rf /var/lib/apt/lists/*
-
-
-#==============================
-# xvfb
-#==============================
-RUN apt-get update &&  apt-get install -yqq \
-	xvfb \
-	&& rm -rf /var/lib/apt/lists/*
+    imagemagick \
+    zip \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
 
 #==============================
 # python
 #==============================
 RUN apt-get update &&  apt-get install -yqq \
-	python \
-	python-pip \
-	python-dev \
-	build-essential \
-	python-tk \
-	&& rm -rf /var/lib/apt/lists/*
+    python \
+    python-tk \
+    python-pip \
+    git-core \
+    python3 \
+    python3-tk \
+    python3-pip \
+    && rm -rf /var/lib/apt/lists/*
 
+RUN alias pip='python3 -m pip'
 
-RUN pip install --upgrade pip
-RUN pip install --upgrade setuptools
+RUN python3 -m pip install --upgrade pip setuptools wheel 
 #========================
 # python dependencies
 #========================
-WORKDIR /opt/robotframework/
 
-COPY requirements.txt ./
-
-RUN pip install --upgrade --no-cache-dir -r requirements.txt
-
-RUN pip install --upgrade --no-cache-dir -U robotframework-MarcinKoperski>=0.0.41
-
-#========================
-# mount test cases and test results folders aka "outputDir"
-#========================
-
-VOLUME /opt/robotframework/output
-VOLUME /opt/robotframework/tests
+RUN python3 -m pip install -U -r https://raw.githubusercontent.com/IlfirinPL/robotframework-MarcinKoperski/master/requirements.txt
+RUN python3 -m pip install -U git+https://github.com/IlfirinPL/robotframework-MarcinKoperski.git
 
 
-
-ENV PATH=/opt/robotframework/bin:/opt/robotframework/drivers:$PATH
-
-WORKDIR /opt/robotframework/tests
-
-
-# for remote monitroing when proper arguments are set later for debug image
-#EXPOSE 3306
-
-
-ENTRYPOINT ["robot", "--outputDir", "/opt/robotframework/output","--argumentfile","/opt/robotframework/tests/argfile.txt", "/opt/robotframework/tests"]
+#ENTRYPOINT ["robot", "--outputDir", "/opt/robotframework/output","--argumentfile","/opt/robotframework/tests/argfile.txt", "/opt/robotframework/tests"]
 
