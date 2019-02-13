@@ -48,5 +48,5 @@ RUN python3 -m pip install -U -r https://raw.githubusercontent.com/IlfirinPL/rob
 RUN python3 -m pip install -U git+https://github.com/IlfirinPL/robotframework-MarcinKoperski.git
 
 
-#ENTRYPOINT ["robot", "--outputDir", "/opt/robotframework/output","--argumentfile","/opt/robotframework/tests/argfile.txt", "/opt/robotframework/tests"]
+#ENTRYPOINT ["robot", "--outputDir", "$ROBOT_HOME/output","--argumentfile","$ROBOT_HOME/tests/argfile.txt", "$ROBOT_HOME/tests"]
 
