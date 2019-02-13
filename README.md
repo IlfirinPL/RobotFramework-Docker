@@ -1,7 +1,6 @@
 # RobotFramework-Docker
-Docker Image for automated setup of RobotFramework Tests
 
-There is required  in folder with <local path to the test suites' folder> file "argfile.txt" to pass additional arguments
+Docker Image for automated RobotFramework Tests as jenkins, bamboo etc. as docker agent
 
-expected use 
-docker run -w /opt/robot -v <local path to the output files like report screenshots' folder>:/opt/robot mkoperski/robotframework:latest bash
+example use manual 
+docker run -w /opt/robot -v <path to your code>:/opt/robot mkoperski/robotframework:latest bash
