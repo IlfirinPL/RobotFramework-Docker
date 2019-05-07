@@ -28,9 +28,6 @@ RUN apt-get update &&  apt-get install -yqq \
 # python
 #==============================
 RUN apt-get update &&  apt-get install -yqq \
-    python \
-    python-tk \
-    python-pip \
     git-core \
     python3 \
     python3-tk \
@@ -46,7 +43,4 @@ RUN python3 -m pip install --upgrade pip setuptools wheel
 
 RUN python3 -m pip install -U -r https://raw.githubusercontent.com/IlfirinPL/robotframework-MarcinKoperski/master/requirements.txt
 RUN python3 -m pip install -U git+https://github.com/IlfirinPL/robotframework-MarcinKoperski.git
-
-
-#ENTRYPOINT ["robot", "--outputDir", "$ROBOT_HOME/output","--argumentfile","$ROBOT_HOME/tests/argfile.txt", "$ROBOT_HOME/tests"]
 
