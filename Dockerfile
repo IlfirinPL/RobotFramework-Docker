@@ -44,3 +44,5 @@ RUN python3 -m pip install --upgrade pip setuptools wheel
 RUN python3 -m pip install -U -r https://raw.githubusercontent.com/IlfirinPL/robotframework-MarcinKoperski/master/requirements.txt
 RUN python3 -m pip install -U git+https://github.com/IlfirinPL/robotframework-MarcinKoperski.git
 
+
+
