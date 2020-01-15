@@ -43,6 +43,6 @@ RUN python -m pip install -U -r https://raw.githubusercontent.com/IlfirinPL/robo
 RUN python -m pip install -U git+https://github.com/IlfirinPL/robotframework-MarcinKoperski.git
 
 RUN python --version
-RUN robot --version
+RUN robot --nostatusrc --version
 
 
