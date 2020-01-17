@@ -39,7 +39,7 @@ RUN python -m pip install --upgrade pip setuptools wheel
 # python dependencies
 #========================
 
-RUN python -m pip install -U -r https://raw.githubusercontent.com/IlfirinPL/robot-install/master/data/packages.txt
+RUN python -m pip install -U -r https://raw.githubusercontent.com/IlfirinPL/robotframework-MarcinKoperski/master/requirements.txt
 RUN python -m pip install -U git+https://github.com/IlfirinPL/robotframework-MarcinKoperski.git
 
 RUN python --version
