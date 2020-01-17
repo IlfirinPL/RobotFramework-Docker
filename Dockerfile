@@ -1,4 +1,4 @@
-FROM python:latest
+FROM python:3.7
 
 LABEL description Robot Framework in Docker with Additional Libaries.
 LABEL Marcin Koperski
