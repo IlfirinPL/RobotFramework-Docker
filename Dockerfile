@@ -34,15 +34,17 @@ RUN apt-get update &&  apt-get install -yqq \
     python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
+RUN python --version
 RUN python -m pip install --upgrade pip setuptools wheel 
+RUN pip --version
 #========================
 # python dependencies
 #========================
-RUN python -m pip install -U -r https://raw.githubusercontent.com/wxWidgets/Phoenix/master/requirements/install.txt
-RUN python -m pip install -U -r https://raw.githubusercontent.com/IlfirinPL/robot-install/master/data/packages.txt
-RUN python -m pip install -U git+https://github.com/IlfirinPL/robotframework-MarcinKoperski.git
+RUN pip install -U -r https://raw.githubusercontent.com/wxWidgets/Phoenix/master/requirements/install.txt
+RUN pip install -U -r https://raw.githubusercontent.com/IlfirinPL/robot-install/master/data/packages.txt
+RUN pip install -U git+https://github.com/IlfirinPL/robotframework-MarcinKoperski.git
 
-RUN python --version
+
 RUN robot --version || true
 
 
