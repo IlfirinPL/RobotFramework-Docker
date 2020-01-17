@@ -10,28 +10,24 @@ RUN mkdir $ROBOT_HOME
 ENV TZ=Europe/Warsaw
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-
-## system upgrade
-RUN apt-get update && apt-get upgrade -yqq \
-    && rm -rf /var/lib/apt/lists/*
-
 #==============================
 # imagemagick
 #==============================
 RUN apt-get update &&  apt-get install -yqq \
     imagemagick \
-    zip \
-    unzip \
     && rm -rf /var/lib/apt/lists/*
 
 #==============================
 # python
 #==============================
 RUN apt-get update &&  apt-get install -yqq \
+    zip \
+    unzip \
     git-core \
     python3 \
     python3-tk \
     python3-pip \
+    unixodbc unixodbc-dev \
     && rm -rf /var/lib/apt/lists/*
 
 RUN python --version
