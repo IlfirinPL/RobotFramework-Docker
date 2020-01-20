@@ -1,0 +1,18 @@
+name: Docker Image CI
+
+on: [release]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag ${USER_TOKEN}/robotframework:$(date +%s) --tag ${USER_TOKEN}/robotframework:latest
+    - name: Docker Login
+      run: docker login --username ${USER_TOKEN} --password ${ACCESS_TOKEN_DOCKER_HUB}
+    - name: Docker Push
+      run: docker push ${USER_TOKEN}/robotframework:latest
