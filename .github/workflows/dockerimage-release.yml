@@ -1,6 +1,7 @@
-name: Docker Image CI
+name: Docker Push to Docker Hub
 
 on: [release]
+
 
 jobs:
 
@@ -11,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${USER_TOKEN}/robotframework:$(date +%s) --tag ${USER_TOKEN}/robotframework:latest
+      run: docker build . --file Dockerfile --tag ${USER_TOKEN}/robotframework:latest
     - name: Docker Login
       run: docker login --username ${USER_TOKEN} --password ${ACCESS_TOKEN_DOCKER_HUB}
     - name: Docker Push
