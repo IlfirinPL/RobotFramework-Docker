@@ -9,7 +9,7 @@ RUN mkdir $ROBOT_HOME
 
 ENV TZ=Europe/Warsaw
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
+RUN ln -s /bin/bash /usr/bin/bash
 #==============================
 # imagemagick
 #==============================
