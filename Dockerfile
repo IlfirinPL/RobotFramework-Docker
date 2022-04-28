@@ -38,7 +38,6 @@ RUN pip --version
 #========================
 # python dependencies
 #========================
-RUN pip install -U -r https://raw.githubusercontent.com/wxWidgets/Phoenix/master/requirements/install.txt
 RUN pip install -U -r https://raw.githubusercontent.com/IlfirinPL/robot-install/master/data/packages.txt
 RUN pip install -U git+https://github.com/IlfirinPL/robotframework-MarcinKoperski.git
 
